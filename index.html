@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="icon" href="images/nhaiconbanphim2-01.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/246169b37f.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-cn7l7gDp0ey6b8c5UyN9UNpSLQFcpTxuP8r72d9czD8Gknf2/2frT0BOu71lfFhH"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
+
+    <!-- ANGULAR JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <header class="bg-transparent p-5">
+        <div class="container d-flex justify-content-between">
+            <div class="logo d-flex justify-items-center align-items-center align-content-center">
+                <img width="100px" src="images/nhaiconbanphim2-01.png" alt="Logo">
+                <h2>Chemyth - CV</h2>
+            </div>
+            <button class="fs-1" id="darkModeToggle"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 side-bar-fixed ">
+                <div class="profile-card rounded-4">
+                    <div class="profile-img-container">
+                        <img src="images/daidien1.jpg" alt="Profile Picture" class="profile-img">
+                    </div>
+                    <div class="profile-info rounded-4">
+                        <h2 class="fw-bold">Ngô Việt Anh</h2>
+                        <p>Web Developer - UI/UX Designer</p>
+                        <div class="social-media mt-3">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        <div id="custom-contact-info"
+                            class="text-start mt-4 p-3 border-0 contact-info shadow p-3 rounded-4">
+                            <p><i class="fas fa-phone"></i> +84 374 156 548</p>
+                            <p><i class="fas fa-map-marker-alt"></i>Ho Chi Minh City, Viet Nam</p>
+                            <p><i class="fas fa-envelope"></i> ngovietanh121@mail.com</p>
+                            <p><i class="fas fa-birthday-cake"></i> August 03, 2003</p>
+                        </div>
+                        <a href="/"><button class="downloadBtn">Edit Profile</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="nav-bar profile-section">
+                    <ul class="nav">
+                        <li class="nav-item"><a href="#!/" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="#!/about" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#!/work" class="nav-link">Work</a></li>
+                        <li class="nav-item"><a href="#!/blog" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="#!/contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- CONTENT -->
+                <div class="content profile-section" ng-view></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container bg-body rounded-4 p-4">
+            <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+    <div class="back-to-top">
+        <a href="#top"><i class="fa-solid fa-chevron-up"></i></a>
+    </div>
+    <script src="test.js"></script>
+    <script>
+        var app = angular.module("myApp", ["ngRoute"]);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when("/", {
+                    templateUrl: "home.html"
+                })
+                .when("/about", {
+                    templateUrl: "about.html"
+                })
+                .when("/work", {
+                    templateUrl: "work.html"
+                })
+                .when("/blog", {
+                    templateUrl: "blog.html"
+                })
+                .when("/contact", {
+                    templateUrl: "contact.html"
+                })
+                .otherwise({
+                    redirectTo: "/"
+                });
+        });
+    </script>
+</body>
+
+</html>

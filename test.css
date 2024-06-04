@@ -1,0 +1,443 @@
+/* CSS cho chế độ tối */
+.dark-mode {
+    background-image: url("images/dark-mode.png") !important;
+    color: #fff !important;
+}
+
+/* CSS cho chế độ sáng */
+.white-mode {
+    background-image: url("images/white-mode.png") !important;
+    color: #000 !important;
+}
+
+/* CSS mặc định cho body */
+body {
+    background-image: url("images/white-mode.png") !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    transition: all 0.5s ease, color 0.7s ease-in-out;
+    font-family: 'Chilanka';
+}
+
+/* CSS cho chế độ tối cho thẻ h1 đến h5 và thẻ p */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode p,
+.dark-mode a,
+.dark-mode #darkModeToggle {
+    color: #fff !important;
+    /* Đổi màu chữ cho thẻ h1 đến h5 và thẻ p */
+}
+
+/* Màu nền cho các phần tử trong chế độ tối */
+.dark-mode .profile-card,
+.dark-mode .profile-section,
+.dark-mode .service-card,
+.dark-mode .contact-form,
+.dark-mode .contact-info,
+.dark-mode footer .container,
+.dark-mode .back-to-top {
+    backdrop-filter: blur(15px);
+    background-color: #1212128e !important;
+    /* Đổi màu nền cho các phần tử */
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+#darkModeToggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    /* Màu chữ cho chế độ sáng */
+}
+
+
+/* Sidebar */
+.side-bar-fixed {
+    position: static;
+    height: fit-content;
+    padding: 15px;
+    margin-top: 100px;
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    /* Bổ sung opacity để tạo hiệu ứng mượt */
+    transform: translateY(0);
+    /* Bổ sung transform để tạo hiệu ứng mượt */
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 150px;
+}
+
+/* Hiệu ứng cho khi sidebar chuyển sang dính */
+.sticky .side-bar-fixed {
+    opacity: 0;
+    transform: translateY(-100%);
+    /* Di chuyển sidebar lên trên */
+}
+
+/* Media query for screens smaller than 768px (Bootstrap's md breakpoint) */
+@media (max-width: 767.98px) {
+    .side-bar-fixed {
+        position: static;
+        top: auto;
+        height: auto;
+        opacity: 1;
+        /* Reset opacity */
+        transform: translateY(0);
+        /* Reset transform */
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 9999;
+    background-color: white;
+    color: #fff !important;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s;
+}
+
+
+.back-to-top:hover,
+.back-to-top:hover i {
+    color: #e14b4f;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+
+
+.profile-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: visible;
+    padding-top: 70px;
+}
+
+.profile-img-container {
+    position: absolute;
+    top: -25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 25px;
+    background: #fff;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-info {
+    padding: 20px;
+}
+
+.profile-info h2 {
+    margin: 10px 0 5px;
+    font-size: 22px;
+}
+
+.profile-info p {
+    color: #777;
+    margin: 0;
+}
+
+#custom-contact-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#custom-contact-info:hover {
+    transform: scale(1.05);
+    /* Phóng to khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Đổ bóng khi hover */
+}
+
+#custom-contact-info p {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+#custom-contact-info i {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: rgba(183, 183, 183, 0.403);
+    color: #e14b4f;
+    margin-right: 8px;
+    padding: 5px;
+    border-radius: 25%;
+}
+
+#custom-contact-info i:hover {
+    color: white;
+    background-color: #e14b4f;
+    cursor: pointer;
+}
+
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #e14b4f;
+    border: 1px solid #e14b502f;
+    border-radius: 25%;
+    transition: background 0.3s;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-media a:hover {
+    background: #e14b4f;
+    color: #fff;
+}
+
+
+.downloadBtn {
+    border: none;
+    padding: 0.8em 2.5em;
+    margin-top: 1em;
+    outline: none;
+    color: white;
+    font-style: 1.2em;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    background: none;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.downloadBtn:before,
+.downloadBtn:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 10em;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 105%;
+    height: 105%;
+    content: "";
+    z-index: -2;
+    background-size: 400% 400%;
+    background: linear-gradient(60deg,
+            #f37055,
+            #ef4e7b,
+            #a166ab,
+            #07b39b);
+}
+
+.downloadBtn:before {
+    -webkit-filter: blur(7px);
+    filter: blur(7px);
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    -webkit-animation: pulse 10s infinite ease;
+    animation: pulse 10s infinite ease;
+}
+
+.downloadBtn:after {
+    -webkit-filter: blur(0.3px);
+    filter: blur(0.3px);
+}
+
+.downloadBtn:hover:before {
+    width: 115%;
+    height: 115%;
+}
+
+.profile-section {
+    padding: 20px;
+    margin: 20px 0;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section .content {
+    padding: 20px;
+}
+
+.profile-section h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 24px;
+    position: relative;
+    display: inline-block;
+}
+
+.profile-section h2:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #ff5a5f;
+    margin-top: 5px;
+}
+
+.profile-section ul li a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #e14b4f;
+    font-size: 16px;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+.profile-section ul li a:hover {
+    color: #ff5a5f !important;
+}
+
+
+.about-me p {
+    color: #777;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.what-i-do {
+    margin-top: 30px;
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.service-card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.service-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.service-card p {
+    color: #777;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.fa-pencil-ruler {
+    color: #ff5a5f;
+}
+
+.fa-code {
+    color: coral;
+}
+
+.fa-camera {
+    color: #4caf50;
+}
+
+.fa-location-dot {
+    color: #ff9800;
+}
+
+.fa-chart-line {
+    color: #2196f3;
+}
+
+.fa-laptop-code {
+    color: #9c27b0;
+}
+
+.my-client {
+    margin-top: 30px;
+}
+
+.client-logos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.client-logos img {
+    max-width: 100px;
+    max-height: 50px;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.client-logos img:hover {
+    filter: grayscale(0%);
+}
