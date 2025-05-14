@@ -22,29 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================== 3. Ẩn Loading Screen ==================
 
   const loadingScreen = document.querySelector(".loading-screen");
-  const welcomeText = document.querySelector(".welcome-text");
-
-  window.addEventListener("load", () => {
-    // Text animation kiểu typing
-    gsap.fromTo(
-      welcomeText,
-      { text: "" },
-      {
-        duration: 2.5,
-        text: "Chào mừng đến trang web của tôi",
-        ease: "none",
-        delay: 0.5,
-        onComplete: () => {
-          // Fade out loading screen sau khi typing xong
-          gsap.to(loadingScreen, {
-            opacity: 0,
-            duration: 1,
-            onComplete: () => (loadingScreen.style.display = "none"),
-          });
-        },
-      }
-    );
-  });
+  if (loadingScreen) {
+    loadingScreen.style.display = "none";
+  }
 
   // ================== 4. Menu toàn màn hình ==================
   if (menuToggle && fullscreenMenu) {
