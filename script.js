@@ -21,10 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ================== 3. Ẩn Loading Screen ==================
 
-  const loadingScreen = document.querySelector(".loading-screen");
-  if (loadingScreen) {
-    loadingScreen.style.display = "none";
-  }
+  window.addEventListener("load", function () {
+    const loadingScreen = document.querySelector(".loading-screen");
+    if (loadingScreen) {
+      loadingScreen.style.display = "none";
+    }
+  });
 
   // ================== 4. Menu toàn màn hình ==================
   if (menuToggle && fullscreenMenu) {
@@ -248,46 +250,51 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+  const isMobile = window.innerWidth <= 768; // Kiểm tra xem màn hình có phải di động không
 
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        document.querySelectorAll(".card").forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          const dx = mouseX - centerX;
-          const dy = mouseY - centerY;
-          const distance = Math.hypot(dx, dy);
+  if (!isMobile) {
+    // Chỉ áp dụng nếu không phải màn hình di động
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
 
-          const text = card.querySelector("span");
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          document.querySelectorAll(".card").forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const dx = mouseX - centerX;
+            const dy = mouseY - centerY;
+            const distance = Math.hypot(dx, dy);
 
-          if (distance < magnetRadius) {
-            gsap.to(card, {
-              x: dx * 0.3,
-              y: dy * 0.3,
-              duration: 0.4,
-              ease: "power2.out",
-            });
-            if (text) {
-              gsap.to(text, {
-                x: dx * 0.15,
-                y: dy * 0.15,
+            const text = card.querySelector("span");
+
+            if (distance < magnetRadius) {
+              gsap.to(card, {
+                x: dx * 0.3,
+                y: dy * 0.3,
                 duration: 0.4,
                 ease: "power2.out",
               });
+              if (text) {
+                gsap.to(text, {
+                  x: dx * 0.15,
+                  y: dy * 0.15,
+                  duration: 0.4,
+                  ease: "power2.out",
+                });
+              }
+            } else {
+              resetMagnet(card, text);
             }
-          } else {
-            resetMagnet(card, text);
-          }
+          });
+          ticking = false;
         });
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+        ticking = true;
+      }
+    });
+  }
 
   // ================== 14. Typed.js ==================
   var typing = new Typed("#intro-highlight", {
