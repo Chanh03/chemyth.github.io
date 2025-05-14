@@ -1,121 +1,654 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="icon" href="images/nhaiconbanphim2-01.png">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/246169b37f.js" crossorigin="anonymous"></script>
+    <meta name="description"
+        content="Portfolio của Ngo Viet Anh, một backend developer đam mê xây dựng các ứng dụng web hiệu quả và tối ưu.">
+    <title>Chemyth - Portfolio</title>
+    <link rel="shortcut icon" href="assets/logo/nhaixanh.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-cn7l7gDp0ey6b8c5UyN9UNpSLQFcpTxuP8r72d9czD8Gknf2/2frT0BOu71lfFhH"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-    <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
-
-    <!-- ANGULAR JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
-
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
-    <header class="bg-transparent p-5">
-        <div class="container d-flex justify-content-between">
-            <div class="logo d-flex justify-items-center align-items-center align-content-center">
-                <img width="100px" src="images/nhaiconbanphim2-01.png" alt="Logo">
-                <h2>Chemyth - CV</h2>
-            </div>
-            <button class="fs-1" id="darkModeToggle"><i class="fa-solid fa-moon"></i></button>
-        </div>
-    </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-12 side-bar-fixed ">
-                <div class="profile-card rounded-4">
-                    <div class="profile-img-container">
-                        <img src="images/daidien1.jpg" alt="Profile Picture" class="profile-img">
-                    </div>
-                    <div class="profile-info rounded-4">
-                        <h2 class="fw-bold">Ngô Việt Anh</h2>
-                        <p>Web Developer - UI/UX Designer</p>
-                        <div class="social-media mt-3">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                        <div id="custom-contact-info"
-                            class="text-start mt-4 p-3 border-0 contact-info shadow p-3 rounded-4">
-                            <p><i class="fas fa-phone"></i> +84 374 156 548</p>
-                            <p><i class="fas fa-map-marker-alt"></i>Ho Chi Minh City, Viet Nam</p>
-                            <p><i class="fas fa-envelope"></i> ngovietanh121@mail.com</p>
-                            <p><i class="fas fa-birthday-cake"></i> August 03, 2003</p>
-                        </div>
-                        <a href="/"><button class="downloadBtn">Edit Profile</button></a>
-                    </div>
+    <main class="">
+        <header>
+            <nav class="floating-nav">
+                <div class="nav-logo">
+                    <img src="assets/logo/nhaixanh.ico" alt="Logo">
                 </div>
+                <ul class="nav-left">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <ul class="nav-right">
+                    <button type="button" title="Toggle theme" class="theme-toggle">
+                        <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 12.79C20.24 12.93 19.45 13 18.65 13C13.61 13 9.5 8.89 9.5 3.85C9.5 3.05 9.57 2.26 9.71 1.5C6.06 2.87 3.5 6.57 3.5 10.75C3.5 16.02 7.73 20.25 13 20.25C17.18 20.25 20.88 17.69 22.25 14.04C21.49 14.18 20.7 14.25 19.9 14.25C19.5 14.25 19.11 14.22 18.73 14.18C19.23 13.8 19.67 13.34 21 12.79Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </ul>
+            </nav>
+        </header>
+        <section class="landing-section">
+            <div class="landing-svg-container">
+                <svg style="transform: scaleY(-1);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 27.8"
+                    preserveAspectRatio="none">
+                    <path class="elementor-shape-fill"
+                        d="M283.5,9.7c0,0-7.3,4.3-14,4.6c-6.8,0.3-12.6,0-20.9-1.5c-11.3-2-33.1-10.1-44.7-5.7	s-12.1,4.6-18,7.4c-6.6,3.2-20,9.6-36.6,9.3C131.6,23.5,99.5,7.2,86.3,8c-1.4,0.1-6.6,0.8-10.5,2c-3.8,1.2-9.4,3.8-17,4.7	c-3.2,0.4-8.3,1.1-14.2,0.9c-1.5-0.1-6.3-0.4-12-1.6c-5.7-1.2-11-3.1-15.8-3.7C6.5,9.2,0,10.8,0,10.8V0h283.5V9.7z M260.8,11.3	c-0.7-1-2-0.4-4.3-0.4c-2.3,0-6.1-1.2-5.8-1.1c0.3,0.1,3.1,1.5,6,1.9C259.7,12.2,261.4,12.3,260.8,11.3z M242.4,8.6	c0,0-2.4-0.2-5.6-0.9c-3.2-0.8-10.3-2.8-15.1-3.5c-8.2-1.1-15.8,0-15.1,0.1c0.8,0.1,9.6-0.6,17.6,1.1c3.3,0.7,9.3,2.2,12.4,2.7	C239.9,8.7,242.4,8.6,242.4,8.6z M185.2,8.5c1.7-0.7-13.3,4.7-18.5,6.1c-2.1,0.6-6.2,1.6-10,2c-3.9,0.4-8.9,0.4-8.8,0.5	c0,0.2,5.8,0.8,11.2,0c5.4-0.8,5.2-1.1,7.6-1.6C170.5,14.7,183.5,9.2,185.2,8.5z M199.1,6.9c0.2,0-0.8-0.4-4.8,1.1	c-4,1.5-6.7,3.5-6.9,3.7c-0.2,0.1,3.5-1.8,6.6-3C197,7.5,199,6.9,199.1,6.9z M283,6c-0.1,0.1-1.9,1.1-4.8,2.5s-6.9,2.8-6.7,2.7	c0.2,0,3.5-0.6,7.4-2.5C282.8,6.8,283.1,5.9,283,6z M31.3,11.6c0.1-0.2-1.9-0.2-4.5-1.2s-5.4-1.6-7.8-2C15,7.6,7.3,8.5,7.7,8.6	C8,8.7,15.9,8.3,20.2,9.3c2.2,0.5,2.4,0.5,5.7,1.6S31.2,11.9,31.3,11.6z M73,9.2c0.4-0.1,3.5-1.6,8.4-2.6c4.9-1.1,8.9-0.5,8.9-0.8	c0-0.3-1-0.9-6.2-0.3S72.6,9.3,73,9.2z M71.6,6.7C71.8,6.8,75,5.4,77.3,5c2.3-0.3,1.9-0.5,1.9-0.6c0-0.1-1.1-0.2-2.7,0.2	C74.8,5.1,71.4,6.6,71.6,6.7z M93.6,4.4c0.1,0.2,3.5,0.8,5.6,1.8c2.1,1,1.8,0.6,1.9,0.5c0.1-0.1-0.8-0.8-2.4-1.3	C97.1,4.8,93.5,4.2,93.6,4.4z M65.4,11.1c-0.1,0.3,0.3,0.5,1.9-0.2s2.6-1.3,2.2-1.2s-0.9,0.4-2.5,0.8C65.3,10.9,65.5,10.8,65.4,11.1	z M34.5,12.4c-0.2,0,2.1,0.8,3.3,0.9c1.2,0.1,2,0.1,2-0.2c0-0.3-0.1-0.5-1.6-0.4C36.6,12.8,34.7,12.4,34.5,12.4z M152.2,21.1	c-0.1,0.1-2.4-0.3-7.5-0.3c-5,0-13.6-2.4-17.2-3.5c-3.6-1.1,10,3.9,16.5,4.1C150.5,21.6,152.3,21,152.2,21.1z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M269.6,18c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C267.7,18.8,269.7,18,269.6,18z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M227.4,9.8c-0.2-0.1-4.5-1-9.5-1.2c-5-0.2-12.7,0.6-12.3,0.5c0.3-0.1,5.9-1.8,13.3-1.2	S227.6,9.9,227.4,9.8z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M204.5,13.4c-0.1-0.1,2-1,3.2-1.1c1.2-0.1,2,0,2,0.3c0,0.3-0.1,0.5-1.6,0.4	C206.4,12.9,204.6,13.5,204.5,13.4z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M201,10.6c0-0.1-4.4,1.2-6.3,2.2c-1.9,0.9-6.2,3.1-6.1,3.1c0.1,0.1,4.2-1.6,6.3-2.6	S201,10.7,201,10.6z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M154.5,26.7c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C152.6,27.5,154.6,26.8,154.5,26.7z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M41.9,19.3c0,0,1.2-0.3,2.9-0.1c1.7,0.2,5.8,0.9,8.2,0.7c4.2-0.4,7.4-2.7,7-2.6	c-0.4,0-4.3,2.2-8.6,1.9c-1.8-0.1-5.1-0.5-6.7-0.4S41.9,19.3,41.9,19.3z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M75.5,12.6c0.2,0.1,2-0.8,4.3-1.1c2.3-0.2,2.1-0.3,2.1-0.5c0-0.1-1.8-0.4-3.4,0	C76.9,11.5,75.3,12.5,75.5,12.6z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M15.6,13.2c0-0.1,4.3,0,6.7,0.5c2.4,0.5,5,1.9,5,2c0,0.1-2.7-0.8-5.1-1.4	C19.9,13.7,15.7,13.3,15.6,13.2z">
+                    </path>
+                </svg>
             </div>
-            <div class="col-lg-8 col-md-12">
-                <div class="nav-bar profile-section">
-                    <ul class="nav">
-                        <li class="nav-item"><a href="#!/" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="#!/about" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="#!/work" class="nav-link">Work</a></li>
-                        <li class="nav-item"><a href="#!/blog" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="#!/contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- CONTENT -->
-                <div class="content profile-section" ng-view></div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="container bg-body rounded-4 p-4">
-            <p>&copy; 2023 My Portfolio. All rights reserved.</p>
-        </div>
+            <div class="container-landing">
+                <div class="landing">
+                    <div class="content">
+                        <h2 class="lined-heading">Hi,</h2>
+                        <h1 style="margin: 0;">I'm Ngo Viet Anh!</h1>
+                        <p id="intro-highlight"></p>
+                        <div class="intro" style="color: rgb(123, 123, 123);">
+                            <span>You can call me <a href="#about">#chemyth</a>, by the way. 😄</span>
+                            <ul>
+                                <li class="intro-list reveal-text">Want to know more? Check out <a href="#about">About
+                                        Me</a>.
+                                </li>
+                                <li class="intro-list reveal-text">Curious about my work? Take a look at <a
+                                        href="https://github.com">Github</a>.</li>
+                                <li class="intro-list reveal-text">Always learning, always growing.</li>
+                            </ul>
+                        </div>
+                        <a href="#projects" class="custom-cta-btn">SEE MY WORK →</a>
+                        <div class="menu-links">
+                            <a href="/cv" class="menu-link">
+                                <span>View CV</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
 
+                            <a href="/cv/resume.pdf" class="menu-link" download>
+                                <span>Download CV</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 5v14M19 12l-7 7-7-7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content" style="position: relative;">
+                        <div class="maskot">
+                            <div class="maskot-img-wrapper">
+                                <img loading="lazy" src="assets/background/nhai.webp" class="icon" alt="Mascot">
+                            </div>
+                        </div>
+                        <span class="wave wave1"></span>
+                        <span class="wave wave2"></span>
+                        <span class="wave wave3"></span>
+                    </div>
+                    <div class="square-container"></div>
+                </div>
+            </div>
+        </section>
+        <section class="what-i-do-section">
+            <div class="what-i-do-container">
+                <div class="title-what-i-do">
+                    <h1 class="title-bg-text">What I Do ?</h1>
+                    <h2 class="title-main-text">
+                        <span class="highlight">Java Dev</span>
+                        <span>Building Robust APIs</span>
+                        <span>Powering Scalable Systems</span>
+                    </h2>
+                </div>
+                <div class="what-i-do-content">
+                    <div class="card">
+                        <div>
+                            <img src="/assets/icons/api-svgrepo-com.svg" alt="">
+                            <h3>API Design & Development</h3>
+                            <p>Build scalable RESTful APIs using Spring Boot for frontend or system integration.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <img src="/assets/icons/chip-component-svgrepo-com.svg" alt="">
+                            <h3>Business Logic Implementation</h3>
+                            <p>Translate complex business processes into efficient and maintainable Java code.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <img src="/assets/icons/database-data-base-config-cog-options-svgrepo-com.svg" alt="">
+                            <h3>Database Handling</h3>
+                            <p>Design schemas, write optimized SQL queries, and work with JPA/Hibernate ORM.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="hero">
+            <div class="hero-svg-container">
+                <svg style="fill: #1a1a1a;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 27.8"
+                    preserveAspectRatio="none">
+                    <path class="elementor-shape-fill"
+                        d="M283.5,9.7c0,0-7.3,4.3-14,4.6c-6.8,0.3-12.6,0-20.9-1.5c-11.3-2-33.1-10.1-44.7-5.7	s-12.1,4.6-18,7.4c-6.6,3.2-20,9.6-36.6,9.3C131.6,23.5,99.5,7.2,86.3,8c-1.4,0.1-6.6,0.8-10.5,2c-3.8,1.2-9.4,3.8-17,4.7	c-3.2,0.4-8.3,1.1-14.2,0.9c-1.5-0.1-6.3-0.4-12-1.6c-5.7-1.2-11-3.1-15.8-3.7C6.5,9.2,0,10.8,0,10.8V0h283.5V9.7z M260.8,11.3	c-0.7-1-2-0.4-4.3-0.4c-2.3,0-6.1-1.2-5.8-1.1c0.3,0.1,3.1,1.5,6,1.9C259.7,12.2,261.4,12.3,260.8,11.3z M242.4,8.6	c0,0-2.4-0.2-5.6-0.9c-3.2-0.8-10.3-2.8-15.1-3.5c-8.2-1.1-15.8,0-15.1,0.1c0.8,0.1,9.6-0.6,17.6,1.1c3.3,0.7,9.3,2.2,12.4,2.7	C239.9,8.7,242.4,8.6,242.4,8.6z M185.2,8.5c1.7-0.7-13.3,4.7-18.5,6.1c-2.1,0.6-6.2,1.6-10,2c-3.9,0.4-8.9,0.4-8.8,0.5	c0,0.2,5.8,0.8,11.2,0c5.4-0.8,5.2-1.1,7.6-1.6C170.5,14.7,183.5,9.2,185.2,8.5z M199.1,6.9c0.2,0-0.8-0.4-4.8,1.1	c-4,1.5-6.7,3.5-6.9,3.7c-0.2,0.1,3.5-1.8,6.6-3C197,7.5,199,6.9,199.1,6.9z M283,6c-0.1,0.1-1.9,1.1-4.8,2.5s-6.9,2.8-6.7,2.7	c0.2,0,3.5-0.6,7.4-2.5C282.8,6.8,283.1,5.9,283,6z M31.3,11.6c0.1-0.2-1.9-0.2-4.5-1.2s-5.4-1.6-7.8-2C15,7.6,7.3,8.5,7.7,8.6	C8,8.7,15.9,8.3,20.2,9.3c2.2,0.5,2.4,0.5,5.7,1.6S31.2,11.9,31.3,11.6z M73,9.2c0.4-0.1,3.5-1.6,8.4-2.6c4.9-1.1,8.9-0.5,8.9-0.8	c0-0.3-1-0.9-6.2-0.3S72.6,9.3,73,9.2z M71.6,6.7C71.8,6.8,75,5.4,77.3,5c2.3-0.3,1.9-0.5,1.9-0.6c0-0.1-1.1-0.2-2.7,0.2	C74.8,5.1,71.4,6.6,71.6,6.7z M93.6,4.4c0.1,0.2,3.5,0.8,5.6,1.8c2.1,1,1.8,0.6,1.9,0.5c0.1-0.1-0.8-0.8-2.4-1.3	C97.1,4.8,93.5,4.2,93.6,4.4z M65.4,11.1c-0.1,0.3,0.3,0.5,1.9-0.2s2.6-1.3,2.2-1.2s-0.9,0.4-2.5,0.8C65.3,10.9,65.5,10.8,65.4,11.1	z M34.5,12.4c-0.2,0,2.1,0.8,3.3,0.9c1.2,0.1,2,0.1,2-0.2c0-0.3-0.1-0.5-1.6-0.4C36.6,12.8,34.7,12.4,34.5,12.4z M152.2,21.1	c-0.1,0.1-2.4-0.3-7.5-0.3c-5,0-13.6-2.4-17.2-3.5c-3.6-1.1,10,3.9,16.5,4.1C150.5,21.6,152.3,21,152.2,21.1z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M269.6,18c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C267.7,18.8,269.7,18,269.6,18z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M227.4,9.8c-0.2-0.1-4.5-1-9.5-1.2c-5-0.2-12.7,0.6-12.3,0.5c0.3-0.1,5.9-1.8,13.3-1.2	S227.6,9.9,227.4,9.8z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M204.5,13.4c-0.1-0.1,2-1,3.2-1.1c1.2-0.1,2,0,2,0.3c0,0.3-0.1,0.5-1.6,0.4	C206.4,12.9,204.6,13.5,204.5,13.4z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M201,10.6c0-0.1-4.4,1.2-6.3,2.2c-1.9,0.9-6.2,3.1-6.1,3.1c0.1,0.1,4.2-1.6,6.3-2.6	S201,10.7,201,10.6z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M154.5,26.7c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C152.6,27.5,154.6,26.8,154.5,26.7z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M41.9,19.3c0,0,1.2-0.3,2.9-0.1c1.7,0.2,5.8,0.9,8.2,0.7c4.2-0.4,7.4-2.7,7-2.6	c-0.4,0-4.3,2.2-8.6,1.9c-1.8-0.1-5.1-0.5-6.7-0.4S41.9,19.3,41.9,19.3z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M75.5,12.6c0.2,0.1,2-0.8,4.3-1.1c2.3-0.2,2.1-0.3,2.1-0.5c0-0.1-1.8-0.4-3.4,0	C76.9,11.5,75.3,12.5,75.5,12.6z">
+                    </path>
+                    <path class="elementor-shape-fill"
+                        d="M15.6,13.2c0-0.1,4.3,0,6.7,0.5c2.4,0.5,5,1.9,5,2c0,0.1-2.7-0.8-5.1-1.4	C19.9,13.7,15.7,13.3,15.6,13.2z">
+                    </path>
+                </svg>
+            </div>
+            <div class="tech-stack-container">
+                <h1 class="title">Tech Stack</h1>
+                <div class="tech-stack-wrapper">
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/angular-js.svg" alt="AngularJS">
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/bootstrap.svg" alt="Bootstrap">
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/css.svg" alt="CSS">
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/html5.svg" alt="HTML5">
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/java.svg" alt="Java">
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/js.svg" alt="JavaScript">
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/spring-boot.svg" alt="Spring Boot">
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="assets/tech/sql-server.svg" alt="SQL Server">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="projects-section">
+            <hr class="glow-hr-reverse">
+            <h2 class="projects-title title" id="projects">Recent Projects</h2>
+            <div class="projects-container">
+                <div class="projects-content">
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <a class="project-hover" href="23">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <h>Project 1</h>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </a>
+                            <div class="project-image">
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Project 1</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="tech-used">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"
+                                        alt="chat gpt">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white "
+                                        alt="spring boot">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/AngularJS-E23237?style=for-the-badge&logo=angularjs&logoColor=white"
+                                        alt="angular js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+                                    " alt="html5">
+                                    <img loading="lazy" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+                                    " alt="css3">
+                                    <img loading="lazy" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+                                    " alt="js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+                                    " alt="bootstrap">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white
+                                    " alt="sql-server">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white
+                                    " alt="Cloudinary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <a class="project-hover" href="23">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <h>Project 1</h>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </a>
+                            <div class="project-image">
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Project 1</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="tech-used">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"
+                                        alt="chat gpt">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white "
+                                        alt="spring boot">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/AngularJS-E23237?style=for-the-badge&logo=angularjs&logoColor=white"
+                                        alt="angular js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+                                    " alt="html5">
+                                    <img loading="lazy" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+                                    " alt="css3">
+                                    <img loading="lazy" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+                                    " alt="js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+                                    " alt="bootstrap">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white
+                                    " alt="sql-server">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white
+                                    " alt="Cloudinary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <a class="project-hover" href="23">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <h>Project 1</h>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </a>
+                            <div class="project-image">
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Project 1</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="tech-used">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"
+                                        alt="chat gpt">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white "
+                                        alt="spring boot">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/AngularJS-E23237?style=for-the-badge&logo=angularjs&logoColor=white"
+                                        alt="angular js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+                                    " alt="html5">
+                                    <img loading="lazy" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+                                    " alt="css3">
+                                    <img loading="lazy" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+                                    " alt="js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+                                    " alt="bootstrap">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white
+                                    " alt="sql-server">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white
+                                    " alt="Cloudinary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <a class="project-hover" href="23">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <h>Project 1</h>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </a>
+                            <div class="project-image">
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Project 1</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="tech-used">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"
+                                        alt="chat gpt">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white "
+                                        alt="spring boot">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/AngularJS-E23237?style=for-the-badge&logo=angularjs&logoColor=white"
+                                        alt="angular js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+                                    " alt="html5">
+                                    <img loading="lazy" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+                                    " alt="css3">
+                                    <img loading="lazy" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+                                    " alt="js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+                                    " alt="bootstrap">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white
+                                    " alt="sql-server">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white
+                                    " alt="Cloudinary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <a class="project-hover" href="23">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <h>Project 1</h>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </a>
+                            <div class="project-image">
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Project 1</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="tech-used">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"
+                                        alt="chat gpt">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white "
+                                        alt="spring boot">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/AngularJS-E23237?style=for-the-badge&logo=angularjs&logoColor=white"
+                                        alt="angular js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+                                    " alt="html5">
+                                    <img loading="lazy" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+                                    " alt="css3">
+                                    <img loading="lazy" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+                                    " alt="js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+                                    " alt="bootstrap">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white
+                                    " alt="sql-server">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white
+                                    " alt="Cloudinary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <a class="project-hover" href="23">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <h>Project 1</h>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </a>
+                            <div class="project-image">
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                                <div class="img-wrapper">
+                                    <img width="100%" loading="lazy" src="https://placehold.co/400" alt="Project 1">
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Project 1</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="tech-used">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"
+                                        alt="chat gpt">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white "
+                                        alt="spring boot">
+                                    <img loading="lazy"
+                                        src="https://img.shields.io/badge/AngularJS-E23237?style=for-the-badge&logo=angularjs&logoColor=white"
+                                        alt="angular js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+                                    " alt="html5">
+                                    <img loading="lazy" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+                                    " alt="css3">
+                                    <img loading="lazy" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+                                    " alt="js">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+                                    " alt="bootstrap">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white
+                                    " alt="sql-server">
+                                    <img loading="lazy" src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white
+                                    " alt="Cloudinary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="quotes-section">
+            <h2 class="section-title title">Quotes</h2>
+            <div class="terminal-wrapper">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-controller">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="terminal-id">
+                            <span>chemyth</span><span>@</span><span>portfolio</span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p class="line"><span style="color: #00FF00;">$</span> <span style="color: #bdb1d0;">echo
+                                "inspiration..."</span></p>
+                        <p class="line"><span style="color: #00FF00;">$</span> <span style="color: #1E90FF;">find /mind
+                                -name "spark.txt"</span></p>
+                        <p class="line"><span style="color: #FF4500;">!</span> <span style="color: #FF4500;">Alert: not
+                                found</span></p>
+                        <p class="line"><span style="color: #00FF00;">></span> <span style="color: #FFD700;">Code your
+                                own sparkle!</span></p>
+                        <p class="line"><span style="color: #00FF00;">></span> <span style="color: #FFD700;">You're the
+                                inspiration!</span></p>
+                        <span id="quote-step"></span>
+                        <div class="terminal-quote">
+                            <span id="quote"></span>
+                        </div>
+                        <button class="terminal-btn" id="quote-gen">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
+                            </svg>
+                            <span>Generate Quote</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2 class="brand">Chemyth</h2>
+                <ul class="footer-links">
+                    <li>✉ ngovietanh121@gmail.com</li>
+                    <li id="contact">
+                        <div class="contact-content">
+                            <div class="contact-form">
+                                <form method="post" action="/subscribe">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input placeholder="your email here" type="email" id="email" name="email"
+                                            required>
+                                    </div>
+                                    <button type="submit" class="custom-cta-btn">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <p class="footer-note">© Chemyth 2025.</p>
+            </div>
+            <div class="footer-right">
+                <h3 class="footer-heading">Let us show you around.</h3>
+                <p class="footer-subtext">
+                    We're here for you every step of the way in your creative journey.<br>
+                    We’ll guide you through the process and collaborate all the way through!
+                </p>
+                <button class="cta-button">
+                    <span class="sparkle">✨</span>
+                    get started
+                </button>
+            </div>
+            <div class="vietnam">
+                <div class="image-wrapper">
+                    <img width="25px" src="assets/logo/vietnam.svg" alt="Cờ Việt Nam">
+                    <span>Hoang Sa & Truong Sa belong to Vietnam.</span>
+                </div>
+                <img width="100%" src="/assets/background/vietnam-01.svg" alt="Bản đồ Việt Nam">
+            </div>
+        </div>
     </footer>
-
-    <div class="back-to-top">
-        <a href="#top"><i class="fa-solid fa-chevron-up"></i></a>
+    <div class="loading-screen">
+        <div class="loading-text">
+            <span class="text__l">C</span>
+            <span class="text__m">h</span>
+            <span class="text__o">à</span>
+            <span class="text__re">o mừng đến trang web của tôi</span>
+        </div>
     </div>
-    <script src="test.js"></script>
-    <script>
-        var app = angular.module("myApp", ["ngRoute"]);
-        app.config(function ($routeProvider) {
-            $routeProvider
-                .when("/", {
-                    templateUrl: "home.html"
-                })
-                .when("/about", {
-                    templateUrl: "about.html"
-                })
-                .when("/work", {
-                    templateUrl: "work.html"
-                })
-                .when("/blog", {
-                    templateUrl: "blog.html"
-                })
-                .when("/contact", {
-                    templateUrl: "contact.html"
-                })
-                .otherwise({
-                    redirectTo: "/"
-                });
-        });
-    </script>
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/gsap@3/dist/CSSRulePlugin.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
