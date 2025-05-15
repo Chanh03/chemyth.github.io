@@ -1,4 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ================== 3. Ẩn Loading Screen ==================
+
+  window.addEventListener("load", function () {
+    const loadingScreen = document.querySelector(".loading-screen");
+    if (loadingScreen) {
+      loadingScreen.style.display = "none";
+    }
+  });
+
+  async function loadPage(page) {
+    try {
+      const res = await fetch(`${page}.html`);
+      if (!res.ok) throw new Error("Không tải được trang: " + page);
+      const html = await res.text();
+      document.getElementById("content").innerHTML = html;
+      console.log(`Đã load trang "${page}"`);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      document.getElementById("content").innerHTML =
+        "<h2>Trang không tồn tại</h2>";
+    }
+  }
+
+  function route() {
+    const page = location.hash.slice(1) || "home";
+    const allowedPages = ["home", "project-1", "project-2"];
+    loadPage(allowedPages.includes(page) ? page : "404");
+  }
+
+  window.addEventListener("load", route);
+  window.addEventListener("hashchange", route);
+
   // ================== 1. DOM Elements ==================
   const menuToggle = document.querySelector(".menu-toggle");
   const fullscreenMenu = document.querySelector(".fullscreen-menu");
@@ -18,15 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "> done!",
   ];
   let isDarkMode = false;
-
-  // ================== 3. Ẩn Loading Screen ==================
-
-  window.addEventListener("load", function () {
-    const loadingScreen = document.querySelector(".loading-screen");
-    if (loadingScreen) {
-      loadingScreen.style.display = "none";
-    }
-  });
 
   // ================== 4. Menu toàn màn hình ==================
   if (menuToggle && fullscreenMenu) {
@@ -298,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ================== 14. Typed.js ==================
   var typing = new Typed("#intro-highlight", {
-    strings: ["", "Java Backend Developer", "Web Designer.", "AI"],
+    strings: ["", "Java Backend Developer.", "Web Designer.", "AI."],
     typeSpeed: 100,
     backSpeed: 40,
     loop: true,

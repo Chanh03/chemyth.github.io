@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 - Trang không tồn tại</title>
+    <style>
+        .error-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff4b2b, #ff7f50);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(255, 75, 43, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .error-title {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-message {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .error-link {
+            text-decoration: none;
+            color: #ff4b2b;
+            font-weight: 700;
+            background: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+            display: inline-block;
+        }
+
+        .error-link:hover {
+            background: #ff4b2b;
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container">
+        <h1 class="error-title">404</h1>
+        <p class="error-message">Ôi không! Trang bạn tìm không tồn tại.</p>
+        <a class="error-link" href="#home">Quay về trang chủ</a>
+    </div>
+</body>
+
+</html>
