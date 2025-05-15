@@ -2,7 +2,7 @@
 
 Welcome to my portfolio website!
 
-🌐 **[View Live Portfolio](https://chanh03.github.io/chemyth.github.io)**
+🌐 **[View Live Portfolio](https://chanh03.github.io/)**
 
 ## About This Project
 
@@ -10,7 +10,7 @@ This is my personal portfolio website showcasing my work and projects. The site 
 
 ## Live Demo
 
-You can view the live website at: [https://chanh03.github.io/chemyth.github.io](https://chanh03.github.io/chemyth.github.io)
+You can view the live website at: [https://chanh03.github.io/chemyth.github.io](https://chanh03.github.io/)
 
 ## Technologies Used
 
